@@ -90,3 +90,7 @@ Lessons are plain data. Add an object to a world file in `src/data/worlds/`:
 - Accounts and cloud sync (e.g. Supabase) with a global leaderboard
 - AI tutor chat that calls an LLM through a small server-side proxy, so the API key stays secret
 - More languages, spaced-repetition review, and shareable certificate links
+
+## 📄 License
+
+[MIT](LICENSE)
