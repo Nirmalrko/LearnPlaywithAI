@@ -1,0 +1,332 @@
+import type { World } from '../types';
+
+export const w1: World = {
+  id: 'basics',
+  index: 0,
+  title: 'AI Basics',
+  tagline: 'What AI really is — and what it is not',
+  emoji: '🤖',
+  color: '#7c3aed',
+  lessons: [
+    {
+      id: 'what-is-ai',
+      title: 'What is Artificial Intelligence?',
+      summary: 'AI, Machine Learning and Deep Learning — and how they fit together.',
+      minutes: 6,
+      blocks: [
+        {
+          type: 'text',
+          md: '**Artificial Intelligence (AI)** is the field of building computer systems that do tasks which normally need human intelligence: recognising images, understanding language, making decisions, or spotting patterns.\n\nA classic program follows **rules a human wrote**. An AI system usually **learns its own rules from examples**. That is the big shift.',
+        },
+        { type: 'diagram', id: 'ai-venn', caption: 'Deep Learning is a kind of Machine Learning, which is one way of doing AI.' },
+        {
+          type: 'keypoints',
+          items: [
+            '**AI** — the broad goal: machines that act intelligently.',
+            '**Machine Learning (ML)** — systems that learn patterns from data instead of being hand-coded.',
+            '**Deep Learning (DL)** — ML using large neural networks with many layers. Powers ChatGPT, Claude, image generators and self-driving perception.',
+            '**Generative AI** — deep learning models that *create* new text, images, audio or code.',
+          ],
+        },
+        {
+          type: 'example',
+          title: 'Rules vs. learning: a spam filter',
+          company: 'Gmail',
+          md: 'Old way: a programmer writes `if subject contains "FREE MONEY" then spam`. Spammers simply write "FR3E M0NEY".\n\nML way: show the system millions of emails labelled spam / not spam. It learns thousands of subtle signals on its own — and keeps improving as new examples arrive. Gmail blocks over 99.9% of spam this way.',
+        },
+        {
+          type: 'callout',
+          tone: 'tip',
+          md: '**Narrow vs. general AI.** Every AI in use today is *narrow*: it is good at specific tasks. *Artificial General Intelligence (AGI)* — an AI that can learn any intellectual task a human can — is still a research goal and a hot debate.',
+        },
+        { type: 'demo', id: 'ai-or-not', caption: 'Test your instincts: is it AI, or just a normal program?' },
+      ],
+      quiz: [
+        {
+          kind: 'mcq',
+          q: 'What is the key difference between traditional programming and machine learning?',
+          options: [
+            'ML programs run faster',
+            'In ML, the system learns rules from examples instead of a human writing every rule',
+            'Traditional programs cannot use data',
+            'ML does not need a computer',
+          ],
+          answer: 1,
+          explain: 'Traditional software follows hand-written rules. ML learns the rules (patterns) from data.',
+        },
+        {
+          kind: 'order',
+          q: 'Order from the broadest field to the most specific:',
+          items: ['Artificial Intelligence', 'Machine Learning', 'Deep Learning'],
+          explain: 'AI contains ML, and ML contains Deep Learning.',
+        },
+        {
+          kind: 'tf',
+          q: 'Today’s AI systems such as voice assistants are examples of Artificial General Intelligence (AGI).',
+          answer: false,
+          explain: 'They are narrow AI — excellent at specific tasks. AGI does not exist yet.',
+        },
+        {
+          kind: 'mcq',
+          q: 'Which of these is Generative AI?',
+          options: ['A calculator', 'A thermostat with a timer', 'A model that writes an essay from a prompt', 'A sorting algorithm'],
+          answer: 2,
+          explain: 'Generative AI creates new content such as text, images, or code.',
+        },
+      ],
+    },
+    {
+      id: 'ai-history',
+      title: 'A Short History of AI',
+      summary: 'From Turing to ChatGPT — 75 years of booms, winters and breakthroughs.',
+      minutes: 6,
+      blocks: [
+        {
+          type: 'text',
+          md: 'AI is not new. Its history is a cycle of big hopes (**AI summers**), disappointment and funding cuts (**AI winters**), and finally the explosion we see today — driven by three ingredients coming together: **big data**, **powerful GPUs**, and **better algorithms**.',
+        },
+        { type: 'demo', id: 'ai-timeline', caption: 'Click through the milestones.' },
+        {
+          type: 'callout',
+          tone: 'info',
+          md: '**Why now?** The internet created huge datasets, gaming GPUs turned out to be perfect for neural-network maths, and the 2017 *Transformer* architecture made it possible to train enormous language models efficiently.',
+        },
+        {
+          type: 'keypoints',
+          items: [
+            '1950 — Alan Turing asks “Can machines think?” and proposes the Turing Test.',
+            '1956 — The term “Artificial Intelligence” is coined at the Dartmouth workshop.',
+            '1997 — IBM Deep Blue beats chess champion Garry Kasparov.',
+            '2012 — AlexNet wins ImageNet: the deep learning revolution starts.',
+            '2016 — AlphaGo beats Lee Sedol at Go.',
+            '2017 — “Attention Is All You Need” introduces the Transformer.',
+            '2022+ — ChatGPT, Claude and others bring large language models to everyone.',
+          ],
+        },
+      ],
+      quiz: [
+        {
+          kind: 'mcq',
+          q: 'What is an “AI winter”?',
+          options: ['A period of reduced funding and interest after hype', 'A cooling system for GPUs', 'An AI that predicts weather', 'A Christmas chatbot'],
+          answer: 0,
+          explain: 'AI winters followed periods where AI over-promised and under-delivered.',
+        },
+        {
+          kind: 'order',
+          q: 'Put these milestones in chronological order:',
+          items: ['Turing Test proposed', 'Deep Blue beats Kasparov', 'AlexNet wins ImageNet', 'Transformer paper published'],
+          explain: '1950 → 1997 → 2012 → 2017.',
+        },
+        {
+          kind: 'mcq',
+          q: 'Which three ingredients drove the modern AI boom?',
+          options: ['Robots, lasers, satellites', 'Big data, GPUs, better algorithms', 'Smartphones, Wi-Fi, apps', 'Cheap memory, keyboards, mice'],
+          answer: 1,
+          explain: 'Data + compute (GPUs) + algorithms (e.g. deep learning, Transformers).',
+        },
+        {
+          kind: 'tf',
+          q: 'The Transformer architecture, used by today’s LLMs, was introduced in 2017.',
+          answer: true,
+          explain: 'The paper “Attention Is All You Need” (Google, 2017) introduced it.',
+        },
+      ],
+    },
+    {
+      id: 'learning-types',
+      title: 'How Machines Learn: 3 Styles',
+      summary: 'Supervised, unsupervised and reinforcement learning explained simply.',
+      minutes: 7,
+      blocks: [
+        {
+          type: 'text',
+          md: 'There are three main ways a machine can learn. Think of how *you* learn: from a teacher with answers, by noticing patterns yourself, or by trial and error.',
+        },
+        { type: 'diagram', id: 'learning-types' },
+        {
+          type: 'example',
+          title: 'Supervised learning — learning with an answer key',
+          company: 'Zillow',
+          md: 'You give the model examples **with the correct answer** (label). Houses with their size, location and *sale price* → the model learns to predict the price of a new house.\n\nTwo flavours: **regression** (predict a number, like price) and **classification** (predict a category, like spam / not spam).',
+        },
+        {
+          type: 'example',
+          title: 'Unsupervised learning — finding hidden structure',
+          company: 'Spotify',
+          md: 'No labels. The model finds groups or patterns on its own. Spotify clusters listeners with similar taste; banks spot unusual transactions that do not fit any normal pattern.',
+        },
+        {
+          type: 'example',
+          title: 'Reinforcement learning — learning by reward',
+          company: 'DeepMind',
+          md: 'An **agent** takes actions in an **environment** and gets **rewards** or penalties. Over millions of attempts it learns a strategy. This is how AlphaGo mastered Go and how robots learn to walk. A variant, *RLHF*, is used to make chatbots helpful.',
+        },
+        {
+          type: 'callout',
+          tone: 'tip',
+          md: '**Self-supervised learning** powers LLMs: the labels come from the data itself. Hide the next word of a sentence, and ask the model to predict it. The internet becomes one giant free answer key.',
+        },
+      ],
+      quiz: [
+        {
+          kind: 'mcq',
+          q: 'Predicting tomorrow’s temperature from past labelled weather data is…',
+          options: ['Unsupervised learning', 'Supervised regression', 'Reinforcement learning', 'Supervised classification'],
+          answer: 1,
+          explain: 'It has labels (actual temperatures) and predicts a number → supervised regression.',
+        },
+        {
+          kind: 'mcq',
+          q: 'Grouping customers into segments without any predefined categories is…',
+          options: ['Unsupervised learning', 'Supervised learning', 'Reinforcement learning', 'Rule-based programming'],
+          answer: 0,
+          explain: 'No labels → unsupervised learning (clustering).',
+        },
+        {
+          kind: 'tf',
+          q: 'In reinforcement learning, an agent learns from rewards and penalties.',
+          answer: true,
+          explain: 'Trial and error guided by a reward signal is the core of RL.',
+        },
+        {
+          kind: 'mcq',
+          q: 'How do LLMs get labels for pre-training on internet text?',
+          options: ['Humans label every sentence', 'They predict the next word — the text itself is the label', 'They don’t use any training', 'Through GPS data'],
+          answer: 1,
+          explain: 'This is self-supervised learning: the next word acts as the label.',
+        },
+      ],
+    },
+    {
+      id: 'ai-everyday',
+      title: 'AI in Your Everyday Life',
+      summary: 'Real products you already use, and the AI technique behind each.',
+      minutes: 5,
+      blocks: [
+        { type: 'text', md: 'You probably interact with dozens of AI systems before lunch. Here is what is happening under the hood.' },
+        {
+          type: 'example',
+          title: 'Recommendations',
+          company: 'Netflix · YouTube · Amazon',
+          md: 'Models learn from what millions of people watched or bought to predict what *you* will like. Netflix has said its recommender influences around 80% of what members watch.',
+        },
+        {
+          type: 'example',
+          title: 'Navigation & arrival times',
+          company: 'Google Maps · Uber',
+          md: 'Models combine live location data with historical traffic patterns to predict travel times and pick routes. Uber uses ML to predict ETAs, prices, and even food-delivery prep times.',
+        },
+        {
+          type: 'example',
+          title: 'Face unlock & photo search',
+          company: 'Apple Face ID · Google Photos',
+          md: 'Computer vision models turn your face into a mathematical fingerprint (an *embedding*). Google Photos lets you search “dog on beach” without ever tagging a photo.',
+        },
+        {
+          type: 'example',
+          title: 'Fraud detection',
+          company: 'Visa · Mastercard · PayPal',
+          md: 'Every card payment is scored by a model in milliseconds. Unusual patterns (a new country, odd amount, strange time) raise the fraud score.',
+        },
+        {
+          type: 'example',
+          title: 'Assistants & writing help',
+          company: 'ChatGPT · Claude · Gemini · Copilot',
+          md: 'Large language models answer questions, write code, summarise documents and translate — all built on the Transformer architecture you will meet in World 6.',
+        },
+        {
+          type: 'callout',
+          tone: 'tip',
+          md: '**Mini-challenge:** for the next day, count how many AI-powered features you use. Most people find 20+.',
+        },
+      ],
+      quiz: [
+        {
+          kind: 'mcq',
+          q: 'Which AI technique powers “Because you watched…” suggestions?',
+          options: ['Recommender systems', 'Speech synthesis', 'Robotics', 'Image generation'],
+          answer: 0,
+          explain: 'Recommender systems predict what you’ll like based on behaviour patterns.',
+        },
+        {
+          kind: 'mcq',
+          q: 'Card fraud detection must work…',
+          options: ['Once per month', 'In milliseconds, on every transaction', 'Only for online orders', 'Only after the customer complains'],
+          answer: 1,
+          explain: 'Fraud models score each payment in real time before it is approved.',
+        },
+        {
+          kind: 'tf',
+          q: 'Searching your photos for “dog on beach” requires you to tag every photo manually first.',
+          answer: false,
+          explain: 'Vision models understand image content, so no manual tagging is needed.',
+        },
+        {
+          kind: 'mcq',
+          q: 'Face ID converts your face into…',
+          options: ['A password typed by Apple', 'A numerical fingerprint (embedding)', 'A JPEG uploaded to the cloud', 'A barcode'],
+          answer: 1,
+          explain: 'Embeddings are vectors of numbers that capture identity features.',
+        },
+      ],
+    },
+    {
+      id: 'ai-project-lifecycle',
+      title: 'Anatomy of an AI Project',
+      summary: 'The 6 steps every real AI product goes through.',
+      minutes: 6,
+      blocks: [
+        {
+          type: 'text',
+          md: 'Building AI is not just “train a model”. In real companies, modelling is often less than 20% of the work. Here is the full lifecycle you will follow throughout this course.',
+        },
+        { type: 'diagram', id: 'ml-pipeline', caption: 'The ML lifecycle is a loop — models must be monitored and retrained.' },
+        {
+          type: 'keypoints',
+          items: [
+            '**1. Define the problem** — what decision will the model help with? How will we measure success?',
+            '**2. Collect data** — gather enough relevant, representative examples.',
+            '**3. Prepare data** — clean, label, and split into train / test sets.',
+            '**4. Train a model** — pick an algorithm and let it learn.',
+            '**5. Evaluate** — test on data it has never seen. Is it good enough? Is it fair?',
+            '**6. Deploy & monitor** — ship it, watch for *drift* as the world changes, retrain.',
+          ],
+        },
+        {
+          type: 'callout',
+          tone: 'warn',
+          md: '**Garbage in, garbage out.** A brilliant algorithm trained on poor data gives poor results. That is why World 2 is all about data.',
+        },
+      ],
+      quiz: [
+        {
+          kind: 'order',
+          q: 'Put the AI project steps in order:',
+          items: ['Define the problem', 'Collect data', 'Prepare data', 'Train a model', 'Evaluate', 'Deploy & monitor'],
+          explain: 'Problem → data → prep → train → evaluate → deploy & monitor.',
+        },
+        {
+          kind: 'mcq',
+          q: 'What does “model drift” mean?',
+          options: ['The model file got corrupted', 'Model performance drops because real-world data changes over time', 'The model moves to another server', 'The model learns too fast'],
+          answer: 1,
+          explain: 'When the world changes (new behaviour, new products), old patterns stop applying.',
+        },
+        {
+          kind: 'tf',
+          q: '“Garbage in, garbage out” means data quality strongly affects model quality.',
+          answer: true,
+          explain: 'No algorithm can fully fix bad or biased data.',
+        },
+        {
+          kind: 'mcq',
+          q: 'Why evaluate on data the model has never seen?',
+          options: ['It is faster', 'To check it generalises instead of just memorising', 'It uses less memory', 'Regulations forbid reusing data'],
+          answer: 1,
+          explain: 'Testing on unseen data estimates real-world performance.',
+        },
+      ],
+    },
+  ],
+};
